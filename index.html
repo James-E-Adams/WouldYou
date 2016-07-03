@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html>
+
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
 <body>
 
 <p>Click the button to get your coordinates.</p>
@@ -8,6 +13,30 @@
 
 <p id="demo"></p>
 
+<script src="wouldyou_basic.js"></script>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    var lat= position.coords.latitude;
+    var long=position.coords.longitude;
+    x.innerHTML = "Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
+    runner(lat,long);
+}
+</script>
+
+
+<!-- 
 <script>
 var x = document.getElementById("demo");
 
@@ -41,7 +70,7 @@ function showError(error) {
     }
 }
 </script>
-
+ -->
 </body>
 </html>
 
